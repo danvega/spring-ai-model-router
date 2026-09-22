@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: model-router
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        # Default only. ModelRouter overrides the model on every request.
+        model: gpt-6-astra
+    typesafe:
+      api-key: ${TYPESAFE_API_KEY}
