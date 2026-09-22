@@ -33,13 +33,15 @@ export TYPESAFE_API_KEY=...
 ./mvnw spring-boot:run
 ```
 
-Preview a routing decision without calling OpenAI:
+Send a prompt:
 
 ```bash
-curl "http://localhost:8080/route?prompt=hello%20there"
+curl -X POST http://localhost:8080/chat \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "hello there"}'
 ```
 
-Route and answer in one call:
+Try a harder one:
 
 ```bash
 curl -X POST http://localhost:8080/chat \
@@ -47,7 +49,7 @@ curl -X POST http://localhost:8080/chat \
   -d '{"prompt": "Design a multi-region failover strategy for a Postgres cluster."}'
 ```
 
-The response includes both the answer and the decision, so you can see which model handled it and how confident Jev was.
+The response includes both the answer and the decision, so you can see which model handled it and how confident Jev was. The greeting should route to `luna` and the architecture question to `astra`.
 
 ## Tests
 
